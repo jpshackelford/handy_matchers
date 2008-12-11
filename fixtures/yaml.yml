@@ -1,0 +1,7 @@
+--- 
+- !ruby/object:OpenStruct 
+  table: 
+    :message: hi
+- !ruby/object:OpenStruct 
+  table: 
+    :message: bye    

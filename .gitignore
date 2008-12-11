@@ -1,0 +1,13 @@
+# Omit the following files from Git repository:
+
+# files generated during development
+coverage/
+doc/
+pkg/
+test/*.log
+test_output/
+
+# garbage left by an editor
+*.bak
+*~
+
