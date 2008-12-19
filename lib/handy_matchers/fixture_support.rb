@@ -1,18 +1,22 @@
+unless defined?( FixtureSupport )
+
 require 'rexml/document'
 require 'yaml'
 
 module FixtureSupport
-    
+
+  attr_accessor :fixture_path, :output_path
+
   # set fixture directory base path used in computing #fixture_path 
   def fixture_path_is( path )
     @fixture_path = path    
   end
-  
+
   # set output directory base path used in computing #output_path
   def output_path_is( path )
     @output_path = path
   end
-  
+   
   # Return the contents of a fixture file. The file is read binary on Windows.
   def fixture(file)
     File.open(fixture_path(file),'rb'){|f| f.read}
@@ -37,13 +41,18 @@ module FixtureSupport
   
   # path to a file in the fixtures directory
   def fixture_path(filename)
-    return File.join(@fixture_path || File.join( Dir.pwd, 'fixtures'), filename)
+    unless defined?( @fixture_path ) && ! @fixture_path.nil?
+      @fixture_path = File.join( Dir.pwd, 'fixtures')
+    end
+    return File.join( @fixture_path , filename)
   end
   
   # path to a file in the output directory
-  def output_path(filename) 
-    out_path = (@output_path || File.join( Dir.pwd, 'test_output'))  
-    return File.join(out_path, filename)
+  def output_path(filename)
+    unless defined?( @output_path ) && ! @output_path.nil?
+      @output_path = File.join( Dir.pwd, 'test_output')
+    end
+    return File.join( @output_path , filename)
   end
   
   # write file in the test output directory 
@@ -62,3 +71,5 @@ module FixtureSupport
   end
 
 end
+
+end # FixtureSupport defined?

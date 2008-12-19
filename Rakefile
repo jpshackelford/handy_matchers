@@ -24,4 +24,5 @@ PROJ.rubyforge.name = 'handy_matchers'
 PROJ.spec.opts << '--color'
 
 PROJ.gem.need_tar = false
-# EOF
+
+PROJ.ruby_opts = [] # silence warnings
