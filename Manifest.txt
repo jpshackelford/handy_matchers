@@ -14,10 +14,12 @@ lib/handy_matchers/binary_tempfile.rb
 lib/handy_matchers/file_content_matcher.rb
 lib/handy_matchers/fixture_support.rb
 lib/handy_matchers/image_matcher.rb
+lib/handy_matchers/stub_table.rb
 lib/handy_matchers/xpath_matcher.rb
 spec/file_content_matcher_spec.rb
 spec/fixture_support_spec.rb
 spec/image_matcher_spec.rb
 spec/spec_helper.rb
+spec/stub_table_spec.rb
 spec/xpath_matcher_spec.rb
 tasks/autotest.rake
