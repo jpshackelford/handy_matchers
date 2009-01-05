@@ -61,10 +61,21 @@ describe StubTable do
     @table.col[1].should == [1 , 2]    
   end
 
-  it "rows and cols collection iterates like Array though it is indexed like a hash" do
-    hash = {0 => 'a', 1 => 'b', 2 => 'c'}
-    @table.send(:add_array_behavior!, hash, 3)
-    hash.map{|s| s.upcase}.should == ['A','B','C']
+  describe "rows and cols collections behave like an Array" do
+
+    before(:each) do
+      @hash = {0 => 'a', 1 => 'b', 2 => 'c'}
+      @table.send(:add_array_behavior!, @hash, 3)      
+    end
+    
+    it "implements #map" do
+      @hash.map{|e| e.upcase}.should == ['A','B','C']
+    end
+  
+    it "implements #select" do
+      @hash.select{|e| e != 'b'}.sort.should == ['a','c']
+    end
+  
   end
   
 end

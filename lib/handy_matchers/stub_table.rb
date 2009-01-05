@@ -116,6 +116,13 @@ class StubTable
           yield(self[i],i)
         end        
       end
+      def select
+        array = []
+        @original_size.times do |i|
+          array << self[i] unless yield(self[i]) == false
+        end
+        return array
+      end      
     end
     hash.instance_variable_set :@original_size, count
   end
